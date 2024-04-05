@@ -221,6 +221,11 @@ def help_command(update: Update, context: CallbackContext) -> None:
     """Send a message when the command /help is issued."""
     update.message.reply_text('If you want to use other function,send /welcome to explore.')
 
+def webhook():
+    update = Update.de_json(request.json, updater.bot)
+    dispatcher.process_update(update)
+    return 'ok'
+
 def main() -> None:
     config = configparser.ConfigParser()
     config.read('config.ini')
